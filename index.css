@@ -1,95 +1,98 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* FUNDO PASTEL */
 body {
-  background: #1e1e2f;
-  color: #fff;
-  font-family: 'Segoe UI', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: 10px;
-}
-
-#container {
-  width: 100%;
-  max-width: 480px;
-  text-align: center;
-}
-
-button {
-  display: block;
-  width: 100%;
+  background: linear-gradient(135deg, #ffe3ec, #e0f7fa);
+  font-family: 'Segoe UI', sans-serif;
   padding: 16px;
-  margin-top: 20px;
-  font-size: 1.1em;
-  background: #ff69b4;
+}
+
+/* CARD CENTRAL */
+#app {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  padding: 24px;
+  transition: opacity 0.3s ease;
+}
+
+/* MENSAGENS */
+.message {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+/* LISTA DE OPÇÕES */
+ul.options {
+  list-style: none;
+}
+
+ul.options li {
+  margin: 8px 0;
+}
+
+/* BOTÕES DE OPÇÃO */
+ul.options button {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ddd;
+  background: #fafafa;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+ul.options button:hover {
+  background: #ffe3ec;
+  transform: translateY(-2px);
+  border-color: #ff9aa2;
+}
+
+/* BOTÕES DE AÇÃO */
+button.action {
+  margin-top: 16px;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(45deg, #ff9aa2, #fad0c4);
+  color: white;
   border: none;
   border-radius: 8px;
-  color: #fff;
+  font-size: 1rem;
   cursor: pointer;
-  touch-action: manipulation;
-  transition: background 0.3s ease;
+  transition: transform 0.2s, opacity 0.2s;
 }
 
-button:hover {
-  background: #ff85c1;
+button.action:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
 }
 
-.message {
-  font-size: 1.3em;
-  margin: 20px 0;
-  line-height: 1.3;
-  padding: 0 10px;
-}
-
-img.jumping-cat,
-img.universe {
+/* GIF */
+img.gif {
   display: block;
   width: 100%;
-  max-width: 320px;
-  height: auto;
-  margin: 0 auto 24px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #000;
+  max-width: 240px;
+  margin: 0 auto 16px;
+  border-radius: 12px;
 }
 
-#galeria {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 16px;
-  justify-items: center;
-  margin-top: 20px;
-}
-
-#galeria img {
-  width: 100%;
-  max-width: 200px;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 0 8px #000;
-  transition: transform 0.3s ease;
-}
-
-#galeria img:hover {
-  transform: scale(1.05);
-}
-
-.series-item p {
-  font-size: 0.9em;
-  margin-top: 6px;
-}
-
-@media (max-width: 320px) {
-  .message {
-    font-size: 1.1em;
-  }
-
-  button {
-    font-size: 1em;
-  }
+/* RESPONSIVO */
+@media (max-width: 360px) {
+  .message { font-size: 1rem; }
+  button, ul.options button { font-size: 0.9rem; }
 }

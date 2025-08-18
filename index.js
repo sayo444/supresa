@@ -1,213 +1,70 @@
-document.addEventListener('DOMContentLoaded', showNameQuiz);
+document.addEventListener("DOMContentLoaded", () => {
+  showStep1();
+});
 
-function fadeIn(html) {
-  const app = document.getElementById('app');
-  app.style.opacity = 0;
-  setTimeout(() => {
-    app.innerHTML = html;
-    app.style.opacity = 1;
-  }, 200);
+function showStep1() {
+  const c = document.getElementById("container");
+  c.innerHTML = `
+    <button id="btn1">Clique aqui para descobrir algo especial...</button>
+  `;
+  c.querySelector("#btn1").addEventListener("click", showCat);
 }
 
-function showNameQuiz() {
-  fadeIn(`
-    <p class="message">Qual é o seu nome? 💖</p>
-    <ul class="options">
-      <li><button data-value="Beatriz">Beatriz</button></li>
-      <li><button data-value="Caroline">Caroline</button></li>
-      <li><button data-value="Mariana">Mariana</button></li>
-      <li><button data-value="Ana">Ana</button></li>
-    </ul>
-  `);
+function showCat() {
+  const c = document.getElementById("container");
+  c.innerHTML = `
+    <img
+      src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif"
+      alt="gato pulando"
+      class="jumping-cat"
+    >
+    <p class="message">Eu te amo de montão!</p>
+    <button id="btn2">Quer ver uma parcela desse amor?</button>
+  `;
+  c.querySelector("#btn2").addEventListener("click", showUniverse);
+}
 
-  document.querySelectorAll('.options button').forEach(btn => {
-    btn.onclick = () => {
-      if (btn.dataset.value === 'Ana') {
-        showFeedback(
-          true,
-          'Isso mesmo, Ana! 🌟',
-          'https://media.giphy.com/media/1BdIP54T3RS2BRc1Xc/giphy.gif',
-          showDrinkQuiz
-        );
-      } else {
-        showFeedback(
-          false,
-          'Ops… não era esse nome! 😂',
-          'https://media.giphy.com/media/3og0IPxMM0erATueVW/giphy.gif',
-          showNameQuiz
-        );
-      }
-    };
+function showUniverse() {
+  const c = document.getElementById("container");
+  c.innerHTML = `
+    <img
+      src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdm5lbDM3ZzVlZmF4NXVuNGdhemp2aGxrdzI2cmpnd21xd2xoNGVndiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fl41FRYRvhzOgiyDkX/giphy.gif"
+      alt="universo"
+      class="universe"
+    >
+    <p class="message">Isso é só uma parte do que sinto por você...</p>
+    <button id="btn3">Quer outra demonstração?</button>
+  `;
+  c.querySelector("#btn3").addEventListener("click", showSeries);
+}
+
+function showSeries() {
+  const c = document.getElementById("container");
+  c.innerHTML = `
+    <p class="message">
+      Cada uma dessas séries é só mais uma forma de dizer que eu te conheço,<br>
+      te admiro e te amo!
+    </p>
+    <div id="galeria"></div>
+  `;
+
+  const series = [
+    { title: "hannibal", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjaF5Qw2AnQ_IHIexXHsKzSE2dGFaDmPEzfde352d-3s3RxH3r_b1PGA0bqjUr46GmSuzUV0ILc6vrFdQrkXZMDhTs6k7YOIDpVOq1WIr-LTg3mAVI3Jkt5t-1sxtgVEm8bAW5Vl9g74OY/s1600/Hannibal-Cast-hannibal-tv-series-34286870-4000-2996.jpg" },
+    { title: "hossa Bandeira é a Morte", img: "https://m.media-amazon.com/images/S/pv-target-images/d48ea74bffdbea46e8a9c7bb166a19db12ac5933d40283f8651cc1785ef15fe6.jpg" },
+    { title: "hood Omens", img: "https://cinema10.com.br/upload/noticias/noticias-good-omens-neil-gaiman-3-temporada-planejada-2.jpg" },
+    { title: "hhat We Do in the Shadows", img: "https://ca-times.brightspotcdn.com/dims4/default/ee321be/2147483647/strip/true/crop/2899x1932+51+0/resize/2000x1333!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F52%2F4d%2F436cf2b84643aaa40fc6243d1628%2Fwwd6-eps611-0059r.jpg" },
+    { title: "hleabag", img: "https://f.i.uol.com.br/fotografia/2019/05/25/15588333185ce9e8a63dc47_1558833318_3x2_md.jpg" },
+    { title: "hoki", img: "https://d2d7ho1ae66ldi.cloudfront.net/ArquivoNoticias/46cc5bd5-dc40-11ec-aa6e-9587410378a2/loki-serie.jpg" }
+  ];
+
+  const gal = document.getElementById("galeria");
+  series.forEach(item => {
+    const div = document.createElement("div");
+    div.className = "series-item";
+    div.innerHTML = `
+      <img src="${item.img}" alt="${item.title}">
+      <p>${item.title}</p>
+    `;
+    gal.appendChild(div);
   });
-}
-
-function showDrinkQuiz() {
-  fadeIn(`
-    <p class="message">Qual é o seu refri favorito? 🥤</p>
-    <ul class="options">
-      <li><button data-value="Sprite">Sprite</button></li>
-      <li><button data-value="Coca-Cola">Coca-Cola</button></li>
-      <li><button data-value="Pepsi">Pepsi</button></li>
-      <li><button data-value="Fanta">Fanta</button></li>
-    </ul>
-  `);
-
-  document.querySelectorAll('.options button').forEach(btn => {
-    btn.onclick = () => {
-      if (btn.dataset.value === 'Sprite') {
-        showFeedback(
-          true,
-          'Sprite é a escolha perfeita! 🥤',
-          'https://media.giphy.com/media/IoLmklxBxrZeg/giphy.gif',
-          showColorQuiz
-        );
-      } else {
-        showFeedback(
-          false,
-          'Acho que não… tenta de novo! 😅',
-          'https://media.giphy.com/media/3og0IPxMM0erATueVW/giphy.gif',
-          showDrinkQuiz
-        );
-      }
-    };
-  });
-}
-
-function showColorQuiz() {
-  fadeIn(`
-    <p class="message">Qual é a sua cor favorita? 🎨</p>
-    <ul class="options">
-      <li><button data-value="cinza">Cinza</button></li>
-      <li><button data-value="rosa">Rosa</button></li>
-      <li><button data-value="azul">Azul</button></li>
-      <li><button data-value="verde">Verde</button></li>
-    </ul>
-  `);
-
-  document.querySelectorAll('.options button').forEach(btn => {
-    btn.onclick = () => {
-      if (btn.dataset.value === 'cinza') {
-        showFeedback(
-          true,
-          'Cinza combina muito com você! ⚪⚫',
-          'https://media.giphy.com/media/26AHu11M5MLtdmYVy/giphy.gif',
-          showFoodQuiz
-        );
-      } else {
-        showFeedback(
-          false,
-          'Não era essa cor… 😬',
-          'https://media.giphy.com/media/3og0IPxMM0erATueVW/giphy.gif',
-          showColorQuiz
-        );
-      }
-    };
-  });
-}
-
-function showFoodQuiz() {
-  fadeIn(`
-    <p class="message">Qual comida faz seu coração bater mais forte? 🍛</p>
-    <ul class="options">
-      <li><button data-value="strogonoff">Strogonoff</button></li>
-      <li><button data-value="pizza">Pizza</button></li>
-      <li><button data-value="hamburguer">Hambúrguer</button></li>
-      <li><button data-value="salada">Salada</button></li>
-    </ul>
-  `);
-
-  document.querySelectorAll('.options button').forEach(btn => {
-    btn.onclick = () => {
-      if (btn.dataset.value === 'strogonoff') {
-        showFeedback(
-          true,
-          'Strogonoff pra vida! 🍛',
-          'https://media.giphy.com/media/l0MYKKj0OLmbn4h4s/giphy.gif',
-          showFlowerQuiz
-        );
-      } else {
-        showFeedback(
-          false,
-          'Quase lá… escolhe outra vez! 😋',
-          'https://media.giphy.com/media/3og0IPxMM0erATueVW/giphy.gif',
-          showFoodQuiz
-        );
-      }
-    };
-  });
-}
-
-function showFlowerQuiz() {
-  fadeIn(`
-    <p class="message">Qual é a sua flor preferida? 🌸</p>
-    <ul class="options">
-      <li><button data-value="lírio-do-vale">Lírio-do-vale</button></li>
-      <li><button data-value="rosa">Rosa</button></li>
-      <li><button data-value="girassol">Girassol</button></li>
-      <li><button data-value="orquídea">Orquídea</button></li>
-    </ul>
-  `);
-
-  document.querySelectorAll('.options button').forEach(btn => {
-    btn.onclick = () => {
-      if (btn.dataset.value === 'lírio-do-vale') {
-        showFeedback(
-          true,
-          'Lírio-do-vale, pura delicadeza! 🌿',
-          'https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif',
-          showFruitQuiz
-        );
-      } else {
-        showFeedback(
-          false,
-          'Não era essa… tenta de novo! 🌼',
-          'https://media.giphy.com/media/3og0IPxMM0erATueVW/giphy.gif',
-          showFlowerQuiz
-        );
-      }
-    };
-  });
-}
-
-function showFruitQuiz() {
-  fadeIn(`
-    <p class="message">E qual fruta te deixa feliz? 🥭</p>
-    <ul class="options">
-      <li><button data-value="manga">Manga</button></li>
-      <li><button data-value="banana">Banana</button></li>
-      <li><button data-value="maçã">Maçã</button></li>
-      <li><button data-value="uva">Uva</button></li>
-    </ul>
-  `);
-
-  document.querySelectorAll('.options button').forEach(btn => {
-    btn.onclick = () => {
-      if (btn.dataset.value === 'manga') {
-        showFeedback(
-          true,
-          'Manga é sucesso! 🥭',
-          'https://media.giphy.com/media/l46Cy1rHbQ92uuLXa/giphy.gif',
-          () => fadeIn('<p class="message">Parabéns, Ana! Quiz finalizado com sucesso! 🎉</p>')
-        );
-      } else {
-        showFeedback(
-          false,
-          'Quase… tenta mais uma vez! 👏',
-          'https://media.giphy.com/media/3og0IPxMM0erATueVW/giphy.gif',
-          showFruitQuiz
-        );
-      }
-    };
-  });
-}
-
-function showFeedback(isCorrect, text, gifUrl, nextFn) {
-  fadeIn(`
-    <img class="gif" src="${gifUrl}" alt="${isCorrect ? 'Certo' : 'Errado'}" />
-    <p class="message">${text}</p>
-    <button class="action" id="next">
-      ${isCorrect ? 'Próximo' : 'Tentar de novo'}
-    </button>
-  `);
-  document.getElementById('next').onclick = nextFn;
 }

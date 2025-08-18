@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #1e1e2f;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 10px;
+}
+
+#container {
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  margin-top: 20px;
+  font-size: 1.1em;
+  background: #ff69b4;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #ff85c1;
+}
+
+.message {
+  font-size: 1.3em;
+  margin: 20px 0;
+  line-height: 1.3;
+  padding: 0 10px;
+}
+
+img.jumping-cat,
+img.universe {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  margin: 0 auto 24px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #000;
+}
+
+#galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  justify-items: center;
+  margin-top: 20px;
+}
+
+#galeria img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 8px #000;
+  transition: transform 0.3s ease;
+}
+
+#galeria img:hover {
+  transform: scale(1.05);
+}
+
+.series-item p {
+  font-size: 0.9em;
+  margin-top: 6px;
+}
+
+@media (max-width: 320px) {
+  .message {
+    font-size: 1.1em;
+  }
+
+  button {
+    font-size: 1em;
+  }
+}

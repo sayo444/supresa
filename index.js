@@ -66,7 +66,7 @@ function showSeries() {
 
 function showFilms() {
   const html = `
-    <p class="message">🎥 Talvez sim</p>
+    <p class="message">🎥 Talvez sim.</p>
     <div class="gallery" id="galeria-filmes"></div>
     <button id="btn5">E animes?</button>
   `;
